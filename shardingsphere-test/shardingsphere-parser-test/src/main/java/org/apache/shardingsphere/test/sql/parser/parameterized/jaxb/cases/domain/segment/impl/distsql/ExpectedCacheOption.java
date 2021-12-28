@@ -15,30 +15,27 @@
  * limitations under the License.
  */
 
-package org.apache.shardingsphere.data.pipeline.scenario.rulealtered;
+package org.apache.shardingsphere.test.sql.parser.parameterized.jaxb.cases.domain.segment.impl.distsql;
 
-import org.apache.shardingsphere.data.pipeline.spi.rulealtered.RuleAlteredCheckoutLockAlgorithm;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.shardingsphere.test.sql.parser.parameterized.jaxb.cases.domain.segment.AbstractExpectedIdentifierSQLSegment;
+
+import javax.xml.bind.annotation.XmlAttribute;
 
 /**
- * Default rule altered checkout lock algorithm.
+ * Expected cache option.
  */
-public final class DefaultRuleAlteredCheckoutLockAlgorithm implements RuleAlteredCheckoutLockAlgorithm {
+@Getter
+@Setter
+public final class ExpectedCacheOption extends AbstractExpectedIdentifierSQLSegment {
     
-    @Override
-    public void init() {
-    }
-    
-    // TODO impl default checkoutLockAlgorithm
-    @Override
-    public void lock(final String schemaName, final String jobId) {
-    }
-    
-    @Override
-    public void releaseLock(final String schemaName, final String jobId) {
-    }
-    
-    @Override
-    public String getType() {
-        return "DEFAULT";
-    }
+    @XmlAttribute(name = "initial-capacity")
+    private int initialCapacity;
+
+    @XmlAttribute(name = "maximum-size")
+    private long maximumSize;
+
+    @XmlAttribute(name = "concurrency-level")
+    private int concurrencyLevel;
 }

@@ -15,18 +15,22 @@
  * limitations under the License.
  */
 
-package org.apache.shardingsphere.scaling.distsql.exception;
+package org.apache.shardingsphere.test.sql.parser.parameterized.jaxb.cases.domain.statement.distsql.ral;
 
-import org.apache.shardingsphere.infra.exception.ShardingSphereException;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.shardingsphere.test.sql.parser.parameterized.jaxb.cases.domain.segment.impl.distsql.ExpectedSQLParserRule;
+import org.apache.shardingsphere.test.sql.parser.parameterized.jaxb.cases.domain.statement.SQLParserTestCase;
+
+import javax.xml.bind.annotation.XmlElement;
 
 /**
- * Scaling job operate exception.
+ * Alter SQL parser rule statement test case.
  */
-public final class ScalingJobOperateException extends ShardingSphereException {
+@Getter
+@Setter
+public final class AlterSQLParserRuleStatementTestCase extends SQLParserTestCase {
     
-    private static final long serialVersionUID = 7598088400647370901L;
-    
-    public ScalingJobOperateException(final String reason) {
-        super(reason);
-    }
+    @XmlElement(name = "sql-parser")
+    private final ExpectedSQLParserRule sqlParserRule = new ExpectedSQLParserRule();
 }

@@ -15,20 +15,22 @@
  * limitations under the License.
  */
 
-package org.apache.shardingsphere.data.pipeline.core.exception;
+package org.apache.shardingsphere.distsql.parser.segment;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.apache.shardingsphere.sql.parser.api.visitor.ASTNode;
 
 /**
- * Data check fail exception.
+ * Cache option segment.
  */
-public final class DataCheckFailException extends RuntimeException {
+@RequiredArgsConstructor
+@Getter
+public final class CacheOptionSegment implements ASTNode {
     
-    private static final long serialVersionUID = -4100671584682823997L;
+    private final Integer initialCapacity;
     
-    public DataCheckFailException(final String message) {
-        super(message);
-    }
+    private final Long maximumSize;
     
-    public DataCheckFailException(final String message, final Throwable cause) {
-        super(message, cause);
-    }
+    private final Integer concurrencyLevel;
 }

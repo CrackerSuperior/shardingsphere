@@ -15,30 +15,18 @@
  * limitations under the License.
  */
 
-package org.apache.shardingsphere.data.pipeline.scenario.rulealtered;
+package org.apache.shardingsphere.data.pipeline.core.exception;
 
-import org.apache.shardingsphere.data.pipeline.spi.rulealtered.RuleAlteredSourceWritingStopAlgorithm;
+import org.apache.shardingsphere.data.pipeline.api.ingest.record.DataRecord;
 
 /**
- * Default rule altered source writing stop algorithm.
+ * Pipeline unexpected data record order exception.
  */
-public final class DefaultRuleAlteredSourceWritingStopAlgorithm implements RuleAlteredSourceWritingStopAlgorithm {
+public final class PipelineUnexpectedDataRecordOrderException extends RuntimeException {
     
-    @Override
-    public void init() {
-    }
+    private static final long serialVersionUID = 6023695604738387750L;
     
-    // TODO impl default sourceWritingStopAlgorithm
-    @Override
-    public void stopSourceWriting(final String schemaName, final String jobId) {
-    }
-    
-    @Override
-    public void resumeSourceWriting(final String schemaName, final String jobId) {
-    }
-    
-    @Override
-    public String getType() {
-        return "DEFAULT";
+    public PipelineUnexpectedDataRecordOrderException(final DataRecord beforeDataRecord, final DataRecord afterDataRecord) {
+        super("beforeDataRecord=" + beforeDataRecord + ", afterDataRecord=" + afterDataRecord);
     }
 }

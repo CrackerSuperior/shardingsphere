@@ -15,17 +15,32 @@
  * limitations under the License.
  */
 
-package org.apache.shardingsphere.data.pipeline.core.exception;
+package org.apache.shardingsphere.data.pipeline.scenario.rulealtered.spi;
 
-import lombok.RequiredArgsConstructor;
-import org.apache.shardingsphere.data.pipeline.api.ingest.record.DataRecord;
+import lombok.ToString;
+import org.apache.shardingsphere.data.pipeline.spi.rulealtered.RuleAlteredSourceWritingStopAlgorithm;
 
-@RequiredArgsConstructor
-public final class UnexpectedDataRecordOrderException extends RuntimeException {
+/**
+ * Default rule altered source writing stop algorithm.
+ */
+@ToString
+public final class DefaultRuleAlteredSourceWritingStopAlgorithm implements RuleAlteredSourceWritingStopAlgorithm {
     
-    private static final long serialVersionUID = 6023695604738387750L;
+    @Override
+    public void init() {
+    }
     
-    private final DataRecord beforeDataRecord;
+    // TODO impl default sourceWritingStopAlgorithm
+    @Override
+    public void stopSourceWriting(final String schemaName, final String jobId) {
+    }
     
-    private final DataRecord afterDataRecord;
+    @Override
+    public void resumeSourceWriting(final String schemaName, final String jobId) {
+    }
+    
+    @Override
+    public String getType() {
+        return "DEFAULT";
+    }
 }
